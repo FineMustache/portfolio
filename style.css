@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+.top-section{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    height: 100vh;
+}
+
+.left-bg{
+    background-color: #001c99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 20%;
+}
+
+.right-bg{
+    background-color: #ffd325;
+}
+
+.pfp-wrap{
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    top: calc(50% - 150px);
+    right: calc(100% / 3 - 150px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pfp-wrap::before{
+    content: "";
+    position: absolute;
+    height: 75px;
+    width: 75px;    
+    background-image: url(./assets/wave.svg);
+    background-repeat: repeat;
+    background-size: 100% 15px; /* Ajuste o valor da altura (100px) conforme necessário */
+    top: -10%;
+    left: -10%;
+}
+
+.pfp-wrap::after{
+    content: "";
+    position: absolute;
+    height: 120px;
+    width: 120px;
+    bottom: -13%;
+    right: -10%;
+    background: linear-gradient(90deg, #ffd325 18px, transparent 1%) center, linear-gradient(#ffd325 18px, transparent 1%) center, #001c99;
+    background-size: 22px 22px;
+}
+
+.pfp{
+    height: 300px;
+    width: 300px;
+    object-fit: contain;
+    position: absolute;
+    z-index: 2;
+}
+
+.name{
+    color: #ffd325;
+    font-size: 32pt;
+    margin: 0;
+    text-transform: uppercase;
+    position: relative;
+    cursor: pointer;
+    height: 64px;
+}
+
+.name::before{
+    content: "GUILHERME MENDES";
+    position: absolute;
+    background-color: #ffd325;
+    color: #001c99;
+    left: 0;
+    width: 0;
+    transition: .5s;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0;
+    height: 64px;
+}
+
+.name:hover{
+    margin: 0;
+}
+
+.name:hover::before{
+    width: 100%;
+}
+
+.nickname{
+    color: white;
+    font-size: 20pt;
+    margin-top: 0!important;
+    height: 40px;
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 0.15em solid white; /* Opcional: simula o cursor piscando */
+    max-width: fit-content;
+}
+
+.nickname > span {
+  color: #ffd325!important; /* Cor personalizada para a primeira e última letra */
+}
+
+.nickname.pulse{
+    animation: pulse 1s step-end infinite forwards;
+}
+
+.nickname.typing {
+    animation: typing 1s steps(20);
+  }
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes erasing {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0;
+    }
+}
+
+@keyframes pulse {
+    75%{
+        border-right: none;
+    }
+    100%{
+        border-right-color: white;
+    }
+}
