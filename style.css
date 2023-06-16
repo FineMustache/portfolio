@@ -15,6 +15,7 @@ html, body{
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr;
     height: 100vh;
+    position: relative;
 }
 
 .left-bg{
@@ -50,6 +51,8 @@ html, body{
     background-size: 100% 15px; /* Ajuste o valor da altura (100px) conforme necessário */
     top: -10%;
     left: -10%;
+    pointer-events: none;
+    transition: .3s;
 }
 
 .pfp-wrap::after{
@@ -61,6 +64,26 @@ html, body{
     right: -10%;
     background: linear-gradient(90deg, #ffd325 18px, transparent 1%) center, linear-gradient(#ffd325 18px, transparent 1%) center, #001c99;
     background-size: 22px 22px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.pfp-wrap:hover img{
+    height: 330px;
+    width: 330px;
+}
+
+.pfp-wrap:hover::after{
+    right: -8%!important;
+    bottom: -11%!important;
+}
+
+.pfp-wrap:hover::before{
+    top: -9.5%!important;
+    left: -9.5%!important;
+    height: 90px;
+    width: 90px;
+    background-size: 100% 17px; /* Ajuste o valor da altura (100px) conforme necessário */
 }
 
 .pfp{
@@ -69,6 +92,8 @@ html, body{
     object-fit: contain;
     position: absolute;
     z-index: 2;
+    transition: .5s;
+    cursor: pointer;
 }
 
 .name{
@@ -152,4 +177,123 @@ html, body{
     100%{
         border-right-color: white;
     }
+}
+
+.inset-border-wrap{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    padding: 25px 0;
+    pointer-events: none;
+}
+
+.inset-border-l{
+    width: calc(100%/3 * 2 - 20px);
+    height: calc(100% - 50px);
+    border: 5px solid #ffd325;
+    margin-left: 25px;
+    left: 0;
+    position: absolute;
+    border-right: none;
+}
+
+.inset-border-r{
+    width: calc(100%/3 - 25px);
+    height: calc(100% - 50px);
+    border: 5px solid #001c99;
+    margin-right: 25px;
+    right: 0;
+    position: absolute;
+    border-left: none;
+}
+
+.background-elements{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none
+}
+
+.circle-1{
+    position: absolute;
+    top: 120px;
+    left: 120px;
+    height: 100px;
+    width: 100px;
+}
+
+.c-solid{
+    width: 100px;
+    height: 100px;
+    background-color: #ffd325;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.c-line{
+    width: 100px;
+    height: 100px;
+    background-image: url(./assets/line.png);
+    background-repeat: repeat;
+    background-size: 10px;
+    transform: rotateZ(45deg);
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 25px;
+}
+
+.sharp-waves{
+    bottom: 100px;
+    right: 100px;
+    position: absolute;
+    height: 37px;
+    width: calc(22*5px);
+}
+
+.sp2{
+    right: 78px;
+    bottom: 70px;
+}
+
+.sp2 .sq{
+    border-color: white!important;
+}
+
+.line-1, .line-2{
+    height: 22px;
+    position: absolute;
+}
+
+.sq{
+    position: absolute;
+    top: 0;
+    transform: rotateZ(45deg);
+    border: 1px solid #001c99;
+}
+
+.line-1 .sq{
+    border-top: none;
+    border-left: none;
+}
+
+.line-2 .sq{
+    border-top: none;
+    border-left: none;
+}
+
+.line-1 {
+    top: 0;
+}
+
+.line-2{
+    top: 15px;
+}
+
+.square-1{
+
 }
