@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
 
+*::-webkit-scrollbar{
+    display: none;
+}
+
+
 *{
     box-sizing: border-box;
     font-family: 'Kanit', sans-serif;
@@ -8,6 +13,23 @@
 html, body{
     margin: 0;
     padding: 0;
+}
+
+html{
+    max-height: 100vh;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+body{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body > section{
+    scroll-snap-align: start;
 }
 
 .top-section{
@@ -21,9 +43,11 @@ html, body{
 .left-bg{
     background-color: #001c99;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding-right: 20%;
+    position: relative;
 }
 
 .right-bg{
@@ -118,6 +142,7 @@ html, body{
     white-space: nowrap;
     margin: 0;
     height: 64px;
+    text-decoration: line-through;
 }
 
 .name:hover{
@@ -294,6 +319,88 @@ html, body{
     top: 15px;
 }
 
-.square-1{
+.personal-section{
+    height: 100vh;
+    width: 100%;
+}
 
+.personal-info{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10%;
+    gap: 10px;
+    font-size: 20pt;
+}
+
+.personal-info > span{
+    white-space: nowrap;
+    color: #001c99;
+    display: flex;
+    align-items: center;
+    animation-name: slide;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+#age{
+    animation-delay: 1s;
+}
+
+#nac{
+    animation-delay: 1.2s;
+}
+
+#form{
+    animation-delay: 1.4s;
+}
+
+.bullet{
+    display: block;
+    width: 8px;
+    height: 10px;
+    background-color: #001c99;
+    margin-right: 5px;
+}
+
+@keyframes slide {
+    100%{
+        transform: translateX(260px);
+    }
+}
+
+.gh{
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    color: white;
+    font-size: 18pt;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-bg a{
+    text-decoration: none;
+    color: white;
+}
+
+.gh-url{
+    word-break: keep-all;
+    white-space: nowrap;
+    width: 0;
+    position: relative;
+    display: inline-block;
+    overflow-x: hidden;
+    transition: 1s;
+}
+
+.gh:hover .gh-url{
+    width: 155px
+}
+
+.gh i{
+    font-size: 25pt;
 }
