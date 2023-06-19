@@ -15,22 +15,28 @@ html, body{
     padding: 0;
 }
 
-html{
+html {
     max-height: 100vh;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
-}
-
-body{
+    overscroll-behavior-y: contain; /* Evita o efeito de elástico no final da rolagem */
+    scroll-snap-stop: always;
+  }
+  
+  body {
     min-height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
-}
+    overflow-x: hidden; /* Adicionado para evitar a barra de rolagem horizontal */
+    touch-action: none;
+    background-color: #F9F9F9;
+  }
 
-body > section{
-    scroll-snap-align: start;
-}
+  body::after{
+    position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
+    content:url(assets/node.png) url(assets/nodeBlack.png) url(assets/html.png) url(assets/htmlBlack.png) url(assets/css.png) url(assets/cssBlack.png) url(assets/js.png) url(assets/jsBlack.png) url(assets/rn.png) url(assets/rnBlack.png);
+ }
 
 .top-section{
     display: grid;
@@ -205,13 +211,14 @@ body > section{
 }
 
 .inset-border-wrap{
-    position: absolute;
+    position: fixed;
     height: 100vh;
     width: 100vw;
     top: 0;
     left: 0;
     padding: 25px 0;
     pointer-events: none;
+    z-index: 999;
 }
 
 .inset-border-l{
@@ -222,6 +229,7 @@ body > section{
     left: 0;
     position: absolute;
     border-right: none;
+    transition: .5s;
 }
 
 .inset-border-r{
@@ -232,6 +240,7 @@ body > section{
     right: 0;
     position: absolute;
     border-left: none;
+    transition: .5s;
 }
 
 .background-elements{
@@ -319,18 +328,13 @@ body > section{
     top: 15px;
 }
 
-.personal-section{
-    height: 100vh;
-    width: 100%;
-}
-
 .personal-info{
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 10%;
     gap: 10px;
-    font-size: 20pt;
+    font-size: 16pt;
 }
 
 .personal-info > span{
@@ -366,7 +370,7 @@ body > section{
 
 @keyframes slide {
     100%{
-        transform: translateX(260px);
+        transform: translateX(235px);
     }
 }
 
@@ -394,7 +398,7 @@ body > section{
     position: relative;
     display: inline-block;
     overflow-x: hidden;
-    transition: 1s;
+    transition: .7s;
 }
 
 .gh:hover .gh-url{
@@ -403,4 +407,149 @@ body > section{
 
 .gh i{
     font-size: 25pt;
+}
+
+.section-indicator{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    z-index: 999;
+    gap: 5px;
+}
+
+.section-indicator > div{
+    width: 10px;
+    height: 10px;
+    transform: rotateZ(45deg);
+    border: 1px solid #001c99;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.section-indicator > div.on{
+    background-color: #001c99;
+}
+
+.comp-section{
+    height: 100vh;
+    width: 100%;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.comp-wrap{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px;
+}
+
+.comp-wrap h1{
+    font-size: 3em;
+}
+
+.comp-items{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.comp-i{
+    height: 70px;
+    width: 70px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: .2s;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.comp-info{
+    margin-top: 25px;
+    height: 50px;
+    width: 5px;
+    background-color: black;
+    transition: 1s;
+    color: white;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.comp-info > span{
+    display: inline-block;
+    width: 0;
+    transition: 1s;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.comp-info.show{
+    width: 100%;
+}
+
+.comp-info.show > span{
+    width: 100%;
+}
+
+.comp-node{
+    background-image: url(assets/nodeBlack.png);
+}
+
+.comp-node:hover{
+    background-image: url(assets/node.png);
+}
+
+.comp-html{
+    background-image: url(assets/htmlBlack.png);
+}
+
+.comp-html:hover{
+    background-image: url(assets/html.png);
+}
+
+.comp-css{
+    background-image: url(assets/cssBlack.png);
+}
+
+.comp-css:hover{
+    background-image: url(assets/css.png);
+}
+
+.comp-js{
+    background-image: url(assets/jsBlack.png);
+}
+
+.comp-js:hover{
+    background-image: url(assets/js.png);
+}
+
+.comp-rn{
+    background-image: url(assets/rnBlack.png);
+}
+
+.comp-rn:hover{
+    background-image: url(assets/rn.png);
+}
+
+body[data-current-section='2'] .section-indicator > div{
+    border-color: black;
+}
+
+body[data-current-section='2'] .section-indicator > div.on{
+    background-color: black;
+}
+
+body[data-current-section='2'] .inset-border-wrap > div{
+    border-color: black;
+}
+
+#infoNode{
+    display: none;
 }
